@@ -1,0 +1,19 @@
+function [] = analytic0(E, a,b, t)
+%E=V,a=small radius,b=large radius,t=total points of x and y axes
+t = int64(t);
+X = linspace(-10,10,t); Y = linspace(-10,10,t);
+[I,J]=meshgrid(X,Y);
+x = t; y = t;
+s = zeros(y,x);
+for j = 1:x
+    for i = 1:y
+        r = sqrt(X(j)^2 + Y(i)^2);
+        if r^2>=a^2
+        s(i,j) = (E/log(a/b))/r ;
+        else
+        s(i,j)=0;
+        end
+    end
+end
+%surf(I,J,s)
+pcolor(I,J,s)
