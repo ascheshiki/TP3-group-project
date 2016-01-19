@@ -1,0 +1,21 @@
+function [] = analytic(E, R, t)
+%E=V,R=radius,t=total points of x and y axes
+t = int64(t);
+X = linspace(-10,10,t); Y = linspace(-10,10,t);
+[I,J]=meshgrid(X,Y);
+x = t; y = t;
+s = zeros(y,x);
+for j = 1:x
+    for i = 1:y
+        r = sqrt(X(j)^2 + Y(i)^2);
+        cos = X(j)./r;
+        if r^2>=R^2
+        s(i,j) = -E *((R^2)/r-r)*cos;
+        else
+        s(i,j)=0;
+        end
+    end
+end
+surf(I,J,s)
+%pcolor(I,J,s)
+analytic(5, 1, 100)
