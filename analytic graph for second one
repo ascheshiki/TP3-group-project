@@ -1,5 +1,5 @@
 function [] = analytic(E, R, t,l)
-%E=V,R=radius,t=total points of x and y axes,l= graph size 
+%E=E0,R=radius,t=total points of x and y axes,l= graph size 
 t = int64(t);
 X = linspace(-l,l,t); Y = linspace(-l,l,t);
 [I,J]=meshgrid(X,Y);
