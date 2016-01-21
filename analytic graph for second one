@@ -1,7 +1,7 @@
-function [] = analytic(E, R, t)
-%E=V,R=radius,t=total points of x and y axes
+function [] = analytic(E, R, t,l)
+%E=V,R=radius,t=total points of x and y axes,l= graph size 
 t = int64(t);
-X = linspace(-10,10,t); Y = linspace(-10,10,t);
+X = linspace(-l,l,t); Y = linspace(-l,l,t);
 [I,J]=meshgrid(X,Y);
 x = t; y = t;
 s = zeros(y,x);
@@ -18,4 +18,3 @@ for j = 1:x
 end
 surf(I,J,s)
 %pcolor(I,J,s)
-analytic(5, 1, 100)
