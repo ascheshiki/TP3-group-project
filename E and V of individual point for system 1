@@ -1,0 +1,31 @@
+#include <iostream>
+#include <math.h>
+#include <cmath>
+#include <stdlib.h>
+
+#define PI 3.14159265
+
+using namespace std;
+int main()
+{
+double a,b,e,r,theta,ee;
+double v;
+
+cout<<"radius of ground circle=?"<<endl;
+cin>>a;
+cout<<"radius of +V circle=?"<<endl;
+cin>>b;
+cout<<"value of +V"<<endl;
+cin>>e;
+cout<<"r=?"<<endl;
+cin>>r;
+cout<<"theta=?"<<endl;
+cin>>theta;
+
+v= -(e/log(a/b))*(log(r/a));
+ee=-(e/log(a/b))/r;
+cout<<"potential = "<<v<<endl;
+cout<<"E = "<<ee<<endl;
+
+return 0;
+}
