@@ -1,0 +1,87 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <math.h>
+#include <cmath>
+#include <stdlib.h>
+
+#define PI 3.14159265
+
+using namespace std;
+
+
+int CountLines(char *filename)
+{
+    ifstream ReadFile;
+    int n=0;
+    string tmp;
+    ReadFile.open(filename,ios::in);//ios::in 表示以只读的方式读取文件
+    if(ReadFile.fail())//文件打开失败:返回0
+    {
+        return 0;
+    }
+    else//文件存在
+    {
+        while(getline(ReadFile,tmp,'\n'))
+        {
+            n++;
+        }
+        ReadFile.close();
+        return n;
+    }
+}
+int main()
+{
+    ifstream file;
+    ofstream inFile;
+    double a,e,r,ee,m;
+    double v;
+    double x,y;
+    cout<<"radius of ground circle=?"<<endl;
+    cin>>a;
+    cout<<"value of +V"<<endl;
+    cin>>e;
+    cout<<"midpoint"<<endl;
+    cin>>m;
+    e=e*2/(2*m+1);
+    inFile.open("data.txt",ios::trunc);
+
+    //int LINES;
+    char filename[512]="Sample.txt";
+    file.open(filename,ios::in);
+    if(file.fail())
+    {
+        cout<<"文件不存在."<<endl;
+        file.close();
+    }
+    else//文件存在
+    {
+       // LINES=CountLines(filename);
+        //double *tempInt=new double[3*LINES];
+        //int i=0;
+        while(!file.eof()) //读取数据到数组
+        {
+
+            file>>x;
+            inFile<<x<<"\t";
+            x=x-m;
+            file>>y;
+            inFile<<y<<"\t";
+            y=y-m;
+            r=sqrt(x*x+y*y);
+            v=e *((a*a)/r-r)*x/r;//should have -, but nm data seems no, so...
+            if(r<=a)
+            {
+                v=0;
+            }
+            file>>ee;
+            ee=abs(v-ee);
+            inFile<<ee<<endl;
+
+        }
+        file.close(); //关闭文件
+        inFile.close();
+
+       // delete []tempInt;
+    }
+}
